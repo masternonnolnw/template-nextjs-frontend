@@ -1,12 +1,13 @@
 'use client'
-import Button from '@/common/components/base/Button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/common/components/base/Form/form'
-import Input from '@/common/components/base/Input'
-import userStore from '@/common/store/user/user-store'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
+
+import Button from '@/common/components/base/Button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/common/components/base/Form/form'
+import Input from '@/common/components/base/Input'
+import userStore from '@/common/store/user/user-store'
 
 const AuthForm = () => {
   const login = userStore((state) => state.login)
