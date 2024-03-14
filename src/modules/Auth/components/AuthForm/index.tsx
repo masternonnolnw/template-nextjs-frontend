@@ -25,9 +25,14 @@ const AuthForm = () => {
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    if (await login(values.username, values.password)) window.location.href = '/store'
-    else setError('Username or password is incorrect')
+    try {
+      if (await login(values.username, values.password)) window.location.href = '/'
+      else setError('Username or password is incorrect')
+    } catch (e) {
+      setError('Username or password is incorrect')
+    }
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[15px]" method="post">

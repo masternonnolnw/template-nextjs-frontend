@@ -12,7 +12,7 @@ interface IUserStore {
   user: User
   token: string
   initUser: () => void
-  login: (username: string, password: string) => Promise<User>
+  login: (username: string, password: string) => Promise<User | null>
 }
 
 const userStore = create<IUserStore>((set) => ({
@@ -34,7 +34,7 @@ const userStore = create<IUserStore>((set) => ({
       apiService.setToken(token)
       set({ isUserInit: true, isAuth: true, user, token, isLoading: false })
     } else {
-      window.location.href = '/loginAgency'
+      window.location.href = '/auth'
       set({ isUserInit: true, isLoading: false })
     }
   },
